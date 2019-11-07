@@ -1,0 +1,38 @@
+<div>
+  <h1>Edit Your Profile</h1>
+  <hr />
+  <div class="col-md-4">
+    <form
+      autocomplete="off"
+      novalidate
+      [formGroup]="profileForm"
+      (ngSubmit)="saveProfile(profileForm.value)"
+    >
+      <div class="form-group" [ngClass]="{'error': profileForm.control.firstName.invalid && profileForm.control.firstName.touched">
+        <label for="firstName">First Name:</label>
+        <input
+          id="firstName"
+          type="text"
+          class="for m-control"
+          placeholder="First Name..."
+          formControlName="firstName"
+        required/>
+      </div>
+      <div class="form-group" [ngClass]="{'error': profileForm.control.lastName.invalid && profileForm.control.lastName.touched">
+        <label for="lastName">Last Name:</label>
+        <input
+          id="lastName"
+          type="text"
+          class="form-control"
+          placeholder="Last Name..."
+          formControlName="lastName"
+        required/>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-default" (click)="cancel()">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>
