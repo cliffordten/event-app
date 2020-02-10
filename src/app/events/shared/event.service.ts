@@ -7,16 +7,22 @@ export class EventService {
   getEvents():Observable<IEvent[]> {
     let subject = new Subject<IEvent[]>();
     setTimeout(() => {
-      subject.next(events);
+      subject.next(EVENTS);
       subject.complete();
     }, 100);
     return subject;
   }
   getEvent(id: number) {
-    return events.find(event => event.id === id);
+    return EVENTS.find(event => event.id === id);
+  }
+
+  saveEvent(eventData){
+    eventData.id = 101;
+    eventData.session = [];
+    EVENTS.push(eventData);
   }
 }
-const events:IEvent[] = [
+const EVENTS:IEvent[] = [
   {
     id: 1,
     name: "Angular Connect",
