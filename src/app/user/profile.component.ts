@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 @Component({
   templateUrl: "profile.component.html",
   styles: [`em{float:right; color: #e05c65; padding-left: 10px;} 
-  .error imput {background-color:#e3c3c5}
+  .error input {background-color:#e3c3c5}
   .error :: -webkit input placeholder{color:#999}
   .error :: -moz-placeholder{color:#999}
   .error : -moz-placeholder{color:#999}
@@ -38,8 +38,11 @@ export class ProfileComponent implements OnInit {
         formValues.lastName
       );
       this.router.navigate(["events"]);
-      console.log(formValues)
     }
+  }
+
+  validate(value){
+    return value.valid || value.untouched;
   }
   cancel() {
     this.router.navigate(["events"]);

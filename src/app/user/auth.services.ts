@@ -8,8 +8,8 @@ export class AuthServices {
     this.currentUser = {
       id: 1,
       userName: userName,
-      lastName: "John",
-      firstName: "Bell"
+      firstName: userName.split(" ")[0],
+      lastName: userName.split(" ")[1]
     };
   }
   isAuthenticated() {
