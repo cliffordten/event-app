@@ -7,7 +7,8 @@ import { userRoutes } from "./user.routes";
 import { LoginComponent } from './login.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(userRoutes), FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, 
+    RouterModule.forChild(userRoutes), FormsModule, ReactiveFormsModule],
   declarations: [ProfileComponent, LoginComponent],
   providers: []
 })
