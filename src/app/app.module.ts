@@ -9,7 +9,8 @@ import {
   EventDetailsComponent,
   EventListResolver,
   EventRouteActivator,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionListComponent
 } from "./events/index";
 import { NavComponent } from "./nav/nav.component";
 import { ToastrService } from "./common/toastr.service";
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavComponent,
     EventDetailsComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule],
   providers: [

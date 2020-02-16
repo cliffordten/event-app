@@ -1,11 +1,9 @@
-import { Component } from "@angular/core";
-import { EventService } from "../shared/event.service";
-import { ActivatedRoute } from "@angular/router";
-import { IEvent, ISession } from '../shared';
+import { Component, Output, EventEmitter } from "@angular/core";
+import { ISession, restrictedWords } from '../shared';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
+  selector: "create-session",
   templateUrl: "./create-session.component.html",
   styles: [`em{float:right; color: #e05c65; padding-left: 10px;} 
   .error input {background-color:#e3c3c5}
@@ -15,6 +13,8 @@ import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_di
   .error : ms-input-placeholder{color:#999}`]
 })
 export class CreateSessionComponent {
+  @Output() saveNewSession = new EventEmitter();
+  @Output() changeMode = new EventEmitter();
     name: FormControl
     presenter: FormControl
     duration: FormControl
@@ -29,7 +29,7 @@ export class CreateSessionComponent {
       this.presenter = new FormControl("", Validators.required)
       this.duration = new FormControl("", Validators.required)
       this.level = new FormControl("", Validators.required)
-      this.abstract = new FormControl("", [Validators.required, Validators.maxLength(400)])
+      this.abstract = new FormControl("", [Validators.required, Validators.maxLength(400), restrictedWords(["foo", "bar"])])
 
       this.newSessionFrom = new FormGroup({
           sessionName: this.name,
@@ -49,8 +49,10 @@ export class CreateSessionComponent {
       abstract: sessionData.abstract,
       voters: []
     }
-    console.log(session)
+    this.saveNewSession.emit(session);
   }
 
-
+  cancel(){
+    this.changeMode.emit();
+  }
 }
