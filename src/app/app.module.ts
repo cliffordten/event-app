@@ -21,6 +21,7 @@ import { Error404Component } from "./error/404.component";
 import { AuthServices } from './user/auth.services';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWell } from './common/collapsible-well.component';
+import { DurationPipe } from './events/shared/duration.pip';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CollapsibleWell } from './common/collapsible-well.component';
     CreateSessionComponent,
     SessionListComponent, 
     CollapsibleWell,
+    DurationPipe
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule],
   providers: [
