@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnChanges } from "@angular/core";
 import { ISession } from '../shared/index';
 
 @Component({
@@ -6,7 +6,11 @@ import { ISession } from '../shared/index';
     templateUrl: "./session-list.component.html",
 
 })
-export class SessionListComponent {
+export class SessionListComponent implements OnChanges {
     @Input() sessions:ISession[];
+    @Input() filter:string;
 
+    ngOnChanges(){
+        
+    }
 }
