@@ -25,6 +25,9 @@ import { DurationPipe } from './events/shared/duration.pip';
 import { JQ_TOKEN } from './common/jQuery.service';
 import { SimpleModalComponent } from './common/simple-modal.component';
 import { ModalTriggerDirective } from './common/modal-trigger.directives';
+import { UpVoteComponent } from './events/event-details/up-vote.component';
+import { VoterService } from './events/event-details/voter.service';
+import { LocationValidationDirective } from './events/location-validation.directive';
 
  let toastr: Toastr = window['toastr'];
  let jQuery = window['$'];
@@ -44,6 +47,8 @@ import { ModalTriggerDirective } from './common/modal-trigger.directives';
     DurationPipe,
     SimpleModalComponent,  
     ModalTriggerDirective,
+    UpVoteComponent,
+    LocationValidationDirective,
 
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule],
@@ -54,6 +59,7 @@ import { ModalTriggerDirective } from './common/modal-trigger.directives';
     EventListResolver,
     EventRouteActivator,
     AuthServices,
+    VoterService,  
     {
       provide: "conDeactivateFunction",
       useValue: checkSaveState
